@@ -1,0 +1,61 @@
+.outline {
+    border: 1px black solid;
+    margin: auto;
+    max-width: 900px;
+    text-align: center;
+}
+h1 {
+    text-align: center;
+}
+#box1 {
+    background-color: red;
+    width: 350px;
+    position: absolute;
+    top: 0;
+    border: 1px black solid;
+    margin: auto;
+    max-width: 900px;
+    height: 100px;
+}
+#box2 {
+    background-color: blue;
+    width: 35px;
+    left: 350px;
+    top: 0;
+    position: absolute;
+    border: 1px black solid;
+    margin: auto;
+    max-width: 900px;
+    height: 100px;
+}
+.inner-outline {
+    border: 1px black solid;
+    margin: auto;
+    margin-bottom: 15px;
+    max-width: 702px;
+    background-color: green;
+    color: white;
+    height: 100px;
+    position: relative;
+}
+table {
+    margin: auto;
+    text-align: center;
+}
+th, td {
+    padding: 5px;
+    border: 1px black solid;
+    width: 30%;
+}
+body {
+    margin-top: 100px;
+}
+
+/* Giving the first table data a smaller width because it's always a number */
+th:nth-child(1) {
+    width: 30px;
+}
+td:nth-child(3n+1) {
+    width: 30px;
+}
+
