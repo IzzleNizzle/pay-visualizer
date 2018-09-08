@@ -1,135 +1,96 @@
-//Global Local variables
+// The idea behind this one is to input your wage roughly, then when you click start it will show how much you are making increimentally
 
-//used for counting table data
-var boxCount = 1;
-// giving a different color to each box
-var color = ["blue", "purple", "red", "orange", "yellow"];
-//variable to store latest value of the left property for boxes
-var leftValue = 0;
-// Account 1 value
-var acct1Value = 100;
+// Calculate the second incriment based off of wage
 
+// Gather wage amount
+let wage = 20;
+// Calculate second increment
+wage /= 3600;
+// rounding to the nearest tenth
+let wageIncrement = parseFloat(Math.round(wage * 100) / 100).toFixed(2);
 
+// Create a timer for the game to run by
+var stopwatch = {
+  time: 0,
+  piggyBank: "0.00",
+  clockRunning: false,
+  reset: function() {
+    // Stop's timer and sets time to zero, as well as prints beginning to the page
+    stopwatch.stop();
+    stopwatch.time = 0;
+    stopwatch.piggyBank = 0;
+    $("#timer").text("00:00");
+    $("#piggy-bank").text("00:00");
+  },
+  start: function() {
+    //  TODO: Use setInterval to start the count here and set the clock to running.
+    if (!stopwatch.clockRunning) {
+      intervalId = setInterval(stopwatch.count, 1000);
+      stopwatch.clockRunning = true;
+    }
+  },
+  stop: function() {
+    //  Use clearInterval to stop the count here and set the clock to not be running.
+    clearInterval(intervalId);
+    stopwatch.clockRunning = false;
+  },
+  count: function() {
+    // Check to see if time is zero and if so stop the timer and send message
+    stopwatch.time++;
+    var var2 = stopwatch.timeConverter(stopwatch.time);
+    $("#timer").text(var2);
 
+    //       Piggy bank calculating
+    
+    //       wageIncrement and Piggybank are floats due to how I'm handling 0.00 numbers. Parsing before adding together as strings concatenate
 
+    stopwatch.piggyBank = parseFloat(wageIncrement) + parseFloat(stopwatch.piggyBank);
+    
+    //     Ensure that the number is rounded
+    stopwatch.piggyBank = parseFloat(Math.round(stopwatch.piggyBank * 100) / 100).toFixed(2);
+    
+    //     Printing number to the screen
+    $("#piggy-bank").text(stopwatch.piggyBank);
+    
+  },
+  timeConverter: function(t) {
+    //  Takes the current time in seconds and convert it to minutes and seconds (mm:ss).
+    var minutes = Math.floor(t / 60);
+    var seconds = t - minutes * 60;
 
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
 
-$("#accountSubmit").on("click", function () {
-  //prevent anoying refresh
-  event.preventDefault();
+    if (minutes === 0) {
+      minutes = "00";
+    } else if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
 
-  // capture user input value
-  acct1Value = parseFloat($("#account-value").val().trim());
-  
-  // Preventing input of values other than numbers
-  if (isNaN(acct1Value)) {
-    $("#prompt1").text("Invalid input")
-  } else {
-    // clear prompt screen if there is anyting there
-    $("#prompt1").empty();
-
-    // print to html the value
-    $("#display-value").text("$" + acct1Value);
-
+    return minutes + ":" + seconds;
   }
+};
 
-
-
+$("#start").on("click", function() {
+  stopwatch.start();
 });
 
-
-
-
-
-// click function for Box 2 form submit
-$("#formSubmit").on("click", function () {
-  //prevent anoying refresh
-  event.preventDefault();
-  //gather inputs from form
-  var name = $("#name1").val().trim();
-  var value = parseFloat($("#value1").val().trim());
-
-  // ::MAJOR LOGIC:: if valid input then create box for it
-  if (name === "" && isNaN(value)) {
-    $("#prompt").text("Invalid input");
-  } else {
-
-    // clear prompt screen if there is anyting there
-    $("#prompt").empty();
-
-    // ****** creating box for visual ********
-
-    var box = $("<div>");
-    // giving box properties of other boxes
-    box.attr("id", "box1");
-    // inserting text into box
-    box.html("<p>Name: " + name + "</p><p>Value: " + value + "</p>");
-    // sizing box
-    box.css("width", (value/acct1Value * 100) + "%");
-    
-    
-    
-
-
-
-
-
-
-
-
-    // first find percentage of input to 
-    box.css("left", leftValue);
-    // setting background color
-    box.css("background-color", color[Math.floor(Math.random() * color.length)]);
-
-    // left offset will need to be the same percentage of the acct1value but to the 700px div and added to the leftValue variable
-
-    // adding value to left value
-    
-    // figure out percentage of 700px div
-    var perc = (value/acct1Value);
-
-    // find magic number from percentage of 700
-    // use case - 25 - what is 25 percent of 700
-    var magicNumber = 700*perc;
-
-    leftValue += magicNumber;
-
-
-
-    // console.log(value, leftValue);
-    $("#graph1").append(box);
-
-    // ****** END creating box for visual ********
-
-
-    // ****** creating table data entry for box ********
-
-    // creating variables for html elements
-    var tableRow = $("<tr>");
-    var tableEntryNumber = $("<td>");
-    var tableEntryName = $("<td>");
-    var tableEntryValue = $("<td>");
-
-    // assigning appropriate variables to html elements
-
-    tableEntryName.text(name);
-    tableEntryValue.text(value);
-    tableEntryNumber.text(boxCount);
-    // incrementing boxCount variable
-    boxCount++
-
-    // appending variables together 
-
-    tableRow.append(tableEntryNumber);
-    tableRow.append(tableEntryName);
-    tableRow.append(tableEntryValue);
-
-    // append tableRow to page
-    $("#account1-table").append(tableRow);
-
-    // ****** ENDcreating table data entry for box ********
-
-
-  }//end if-else statement
+$("#pause").on("click", function() {
+  stopwatch.stop();
 });
+
+$("#reset").on("click", function() {
+  stopwatch.reset();
+});
+
+// TO-Do's
+
+// input for wage.
+
+// start button
+
+// be able to see total made and also rate per second per minute etc
+
+// every second see it add up into a bucket showing todays total.
+// maybe database with much more history etc.
