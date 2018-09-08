@@ -2,6 +2,30 @@
 
 // Calculate the second incriment based off of wage
 
+/*
+
+this is the number crunching for the wage calculator
+
+
+Crunching some numbers for my website
+
+$20 p/hour is how much per second?
+
+How many seconds in an hour?
+
+60 minutes
+60 m * 60 s
+3600
+
+20.00 p/hr  / 3600 seconds
+0.005555556
+
+
+3600 * 0.005
+18
+
+*/
+
 // Gather wage amount
 let wage = 20;
 // Calculate second increment
