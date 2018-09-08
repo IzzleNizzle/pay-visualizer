@@ -14,85 +14,23 @@
 </head>
 
 <body>
+<div id="timer">00:00</div>
+
+<!-- The idea behind the form is that I can have a user automatically input their wage so they can see for themselves. In the beginning though I'm just going to hard code $18 an hour -->
+<!-- <form>
+  <input type='text'>
+  <input type='submit' value='Start'>
+</form> -->
 
 
-    <!-- Navbar Begin -->
-    <nav class="navbar navbar-inverse navbar-fixed-top hide">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                    aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Iz</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="#">Home</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project #1
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="Basic-Portfolio/index.html">About</a>
-                            </li>
-                            <li>
-                                <a href="Basic-Portfolio/portfolio.html">Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="Basic-Portfolio/contact.html">Contact</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!--/.nav-collapse -->
-        </div>
-    </nav>
-    <!-- Navbar End -->
+<button id='start'>Start</button>
+<button id='pause'>Pause</button>
+<button id='reset'>Reset</button>
+<div>$ <span id='piggy-bank'>0.00</span>
+</div>
 
-
-    <div class='outline'>
-        <h1>Account 1</h1>
-        <form> 
-            <input type="text" id="account-value" placeholder="Account Value: $">
-            <input type="submit" value="Submit" id='accountSubmit' class='btn'>
-        </form>
-        <div class='outline' id='prompt1'></div>
-        <div class='inner-outline' id='graph1'>
-            <span id='display-value'>$100</span>
-        </div>
-    </div>
-
-    <div class='outline'>
-        <h1>Box 2</h1>
-        <p>use this box to list the different partitions and what they are for. be able to remove one. lastly include a for
-            to fill this all out</p>
-        <!--   <div class='btn btn-default' id='btn1'>click me</div>
-  <div class='btn btn-default' id='btn1'>click me</div>
-  <div class='btn btn-default' id='btn1'>click me</div>
-  <div class='btn btn-default' id='btn1'>click me</div> -->
-        <form>
-            <input type="text" name="name" placeholder='Type Name Here' id='name1'>
-            <input type="text" name="value" placeholder='Place $ Value Here' id='value1'>
-            <input type="submit" value="Submit" id='formSubmit' class='btn'>
-        </form>
-        <div class='outline' id='prompt'></div>
-        <table id='account1-table'>
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>$ Value</th>
-                <!-- <th>+ -</th> -->
-            </tr>
-        </table>
-    </div>
+<!-- <img src='https://media0.giphy.com/media/dD5ARBMyZXPB6/giphy.gif'> -->
+<!-- https://media0.giphy.com/media/dD5ARBMyZXPB6/giphy.gif -->
 
     
 
